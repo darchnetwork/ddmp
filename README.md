@@ -54,3 +54,29 @@ cd ddmp
 pip install -r requirements.txt
 pipenv install requests
 ```
+
+# EDCSA Eliptic Curve algorithm and generate pubkey from private key
+```shell
+sudo apt-get install build-essential python3-dev
+pip install pycryptodomex
+python3 -m Cryptodome.SelfTest
+pip install ethereum
+pip install ecdsa
+```
+
+```python3
+import codecs, ecdsa
+from Crypto.Hash import keccak
+private_key_bytes = codecs.decode('F37E27F4C7CA36E3CCE9042F42C6EA32FA231673E2FA90D92D348276460BE488', 'hex')
+key = ecdsa.SigningKey.from_string(private_key_bytes,curve=ecdsa.SECP256k1).verifying_key
+key_bytes = key.to_string()
+key_hex = codecs.encode(key_bytes, 'hex')
+
+public_key_bytes = codecs.decode(key_hex, 'hex')
+keccak_hash = keccak.new(digest_bits=256)
+keccak_hash.update(public_key_bytes)
+keccak_digest = keccak_hash.hexdigest()
+# Take the last 20 bytes
+wallet_len = 40
+wallet = '0x' + keccak_digest[-wallet_len:]
+```
