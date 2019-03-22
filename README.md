@@ -8,7 +8,7 @@ It is the most popular and original DDMP python script. The code is exceptionall
 [![GitHub Issues](https://img.shields.io/badge/open%20issues-0-yellow.svg)](https://github.com/darchnetwork/ddmp/issues)
 
 - Chat in [darchnetwork channel on Gitter](https://gitter.im/darchnetwork).
-- Report bugs, issues or feature requests using [GitHub issues](issues/new).
+- Report bugs, issues or feature requests using [GitHub issues](https://github.com/darchnetwork/ddmp/issues).
 
 
 
