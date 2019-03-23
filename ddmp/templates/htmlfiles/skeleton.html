@@ -585,8 +585,8 @@
 	<!-- SECTION HEADLINE -->
 	<div class="section-headline-wrap">
 		<div class="section-headline">
-			<h2>Sign a message example</h2>
-			<p>Home<span class="separator">/</span>Sign a message<span class="separator">/</span> </p>
+			<h2>Homomorphic encryption with ethereum public key </h2>
+			<p>Home<span class="separator">/</span>Encrypt an url<span class="separator"></span> </p>
 		</div>
 	</div>
 	<!-- /SECTION HEADLINE -->
@@ -605,12 +605,18 @@
 		<div class="ht-banner">
 			<!-- HT BANNER CONTENT -->
 			<div class="ht-banner-content">
-				<p class="text-header">Homomorphic encryption with eth address </p>
-				<p>Your random ethereum address<br>
-					 {{addressif}} </p>
-				<p>Private key of ethereum address<br> {{keyether}} </p>
 
-				<a href="#" class="button mid dark">Sign a  <span class="primary">message</span></a>
+				<p><b>Your random ethereum address:</b> {{addressif}} </p>
+				<p><b>Private key of ethereum address </b><br> {{keyether}} </p>
+				<p><b>Your Public Key:</b></p>
+
+				<textarea rows="2" cols="50">{{pkey}}</textarea>
+
+				<p><b>Encrypt any url using with your public key:</b></p>
+				<textarea rows="2" cols="50"></textarea>
+				<a href="#" class="button mid dark">Enctypt an example  <span class="primary">url</span></a>
+
+				<br>
 			</div>
 			<!-- /HT BANNER CONTENT -->
 		</div>

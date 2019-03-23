@@ -55,7 +55,7 @@ pip install -r requirements.txt
 pipenv install requests
 ```
 
-# EDCSA Eliptic Curve algorithm and generate pubkey from private key
+## EDCSA Eliptic Curve algorithm and generate pubkey from private key
 ```shell
 sudo apt-get install build-essential python3-dev
 pip install pycryptodomex
