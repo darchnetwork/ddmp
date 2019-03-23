@@ -30,7 +30,7 @@ from ecies import encrypt, decrypt
 
 
 
-def encrypt(request):
+def generate(request):
     private_key = utils.sha3(os.urandom(4096))
     raw_address = utils.privtoaddr(private_key)
     addressif = address.to_normalized_address(raw_address)
@@ -44,6 +44,60 @@ def encrypt(request):
     decryptedvalue = decrypt(keyether, encryptedval)
     print("decrypted value is here",decryptedvalue)
     #public_key = public_key.to_string().hex()
-
-
     return render(request, "skeleton.html", locals())
+
+
+@csrf_exempt
+def encryption(request):
+    return render(request, "enc.html", locals())
+
+@csrf_exempt
+def encpost(request):
+    if request.method == 'POST':
+        datareponse = {}
+        pubhex = request.POST.get('requesterspkey')
+        data = request.POST.get('encdata')#.encode()
+
+        try:
+            encdata = encrypt(pubhex, data.encode())
+        except ValueError:
+            datareponse["info"] = "Please fill public key correctly"
+            datareponse["response"] = "non"
+            return HttpResponse(json.dumps(datareponse), content_type = "application/json")
+        print(type(encdata))
+        print(encdata)
+        asd = utils.encode_hex(encdata)
+
+        datareponse["info"] = asd
+        datareponse["response"] = "ok"
+        return HttpResponse(json.dumps(datareponse), content_type = "application/json")
+    else:
+        return HttpResponse('Fail')
+
+@csrf_exempt
+def decryption(request):
+    return render(request, "dec.html", locals())
+
+@csrf_exempt
+def depost(request):
+    if request.method == 'POST':
+        datareponse = {}
+        keyether = request.POST.get('privatekey')
+        decdata = request.POST.get('decdata')
+        xxxxxx = utils.decode_hex(decdata)
+
+        print(keyether)
+        print(decdata)
+        print(xxxxxx)
+
+        decryptedvalue = decrypt(keyether, xxxxxx)
+        print("decryptedvalue",decryptedvalue)
+
+        print("decryptedvaluestr",decryptedvalue.decode('utf-8'))
+
+
+        datareponse["info"] = decryptedvalue.decode('utf-8')
+        datareponse["response"] = "ok"
+        return HttpResponse(json.dumps(datareponse), content_type = "application/json")
+    else:
+        return HttpResponse(json.dumps(datareponse), content_type = "application/json")

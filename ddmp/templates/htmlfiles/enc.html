@@ -383,13 +383,13 @@
 
 			<!-- DROPDOWN ITEM -->
 			<li class="dropdown-item">
-				<a href="how-to-shop.html">How to Shop</a>
+				<a href="/encryption">Encryption</a>
 			</li>
 			<!-- /DROPDOWN ITEM -->
 
 			<!-- DROPDOWN ITEM -->
 			<li class="dropdown-item">
-				<a href="products.html">Products</a>
+				<a href="/decryption">Decryption</a>
 			</li>
 			<!-- /DROPDOWN ITEM -->
 
@@ -572,7 +572,7 @@
 	<!-- SECTION HEADLINE -->
 	<div class="section-headline-wrap">
 		<div class="section-headline">
-			<h2>Homomorphic encryption with ethereum public key </h2>
+			<h2>Homomorphic encryption with requester's public key.</h2>
 			<p>Home<span class="separator">/</span>Encrypt an url<span class="separator"></span> </p>
 		</div>
 	</div>
@@ -593,13 +593,13 @@
 			<!-- HT BANNER CONTENT -->
 			<div class="ht-banner-content">
 
-				<p><b>Your random ethereum address:</b> {{addressif}} </p>
-				<p><b>Private key of ethereum address </b><br> {{keyether}} </p>
-				<p><b>Your Public Key:</b></p>
+				<textarea id="requesterspkey" name="requesterspkey" rows="2" cols="50" placeholder="You encrypt data's with requesters public key."></textarea>
 
-				<textarea rows="2" cols="50">{{pkey}}</textarea>
+			 	<textarea id="encdata" name="encdata" rows="2" cols="50" placeholder="Which data will encrypt"></textarea>
 
- 
+				<button id="encnow" name="encnow" class="button mid dark"> Encrypt </button>
+
+				<p id="resultenc">Result</p>
 
 				<br>
 			</div>
@@ -803,5 +803,6 @@
 <script src="/static/js/user-board.js"></script>
 <!-- Footer -->
 <script src="/static/js/footer.js"></script>
+<script type="text/javascript" src="/static/js/ddmp.js?v=1"></script>
 </body>
 </html>
