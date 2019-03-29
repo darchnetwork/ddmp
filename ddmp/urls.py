@@ -22,12 +22,26 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^$', core.views.generate, name='generate'),
+    url(r'^$', core.views.landing, name='landing'),
+
+
+
+
+    url(r'^generate/$', core.views.generate, name='generate'),
     url(r'^encryption/$', core.views.encryption, name='encryption'),
     url(r'^decryption/$', core.views.decryption, name='decryption'),
 
     url(r'^encpost/$', core.views.encpost, name='encpost'),
     url(r'^depost/$', core.views.depost, name='depost'),
+
+
+
+
+
+
+
+
+
 
 ]
 

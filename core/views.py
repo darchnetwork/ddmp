@@ -29,6 +29,13 @@ from ecies.utils import generate_eth_key, generate_key
 from ecies import encrypt, decrypt
 
 
+@csrf_exempt
+def landing(request):
+    return render(request, "landing.html", locals())
+
+
+
+
 
 def generate(request):
     private_key = utils.sha3(os.urandom(4096))

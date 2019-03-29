@@ -8,7 +8,7 @@
 
     $alert_user.on('click', function(e){
         e.preventDefault();
-        $('body').xmalert({ 
+        $('body').xmalert({
             x: 'right',
             y: 'bottom',
             xOffset: 30,
@@ -19,14 +19,14 @@
             template: 'item',
             title: '<span class="bold">MeganV.</span> added <span class="bold">Pixel Diamond Gaming Shop</span> to favourites',
             timestamp: '2 hours ago',
-            imgSrc: 'images/avatars/avatar_02.jpg',
+            imgSrc: '/static/images/avatars/avatar_02.jpg',
             iconClass: 'icon-heart'
         });
     });
 
     $alert_admin.on('click', function(e){
         e.preventDefault();
-        $('body').xmalert({ 
+        $('body').xmalert({
             x: 'right',
             y: 'bottom',
             xOffset: 30,
@@ -38,7 +38,7 @@
             title: 'What would you improve?',
             paragraph: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.',
             timestamp: '2 hours ago',
-            imgSrc: 'images/dashboard/alert-logo.png',
+            imgSrc: '/static/images/dashboard/alert-logo.png',
             buttonSrc: [ '#','#' ],
             buttonText: 'Take the <span class="primary">Survey!</span>',
         });
@@ -46,7 +46,7 @@
 
     $alert_tip.on('click', function(e){
         e.preventDefault();
-        $('body').xmalert({ 
+        $('body').xmalert({
             x: 'right',
             y: 'bottom',
             xOffset: 30,
@@ -64,7 +64,7 @@
 
     $alert_info.on('click', function(e){
         e.preventDefault();
-        $('body').xmalert({ 
+        $('body').xmalert({
             x: 'right',
             y: 'top',
             xOffset: 30,
@@ -80,7 +80,7 @@
 
     $alert_success.on('click', function(e){
         e.preventDefault();
-        $('body').xmalert({ 
+        $('body').xmalert({
             x: 'right',
             y: 'top',
             xOffset: 30,
@@ -96,7 +96,7 @@
 
     $alert_error.on('click', function(e){
         e.preventDefault();
-        $('body').xmalert({ 
+        $('body').xmalert({
             x: 'right',
             y: 'top',
             xOffset: 30,
