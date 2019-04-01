@@ -16,7 +16,7 @@
     <!-- /MOBILE MENU HANDLER -->
 
     <!-- LOGO MOBILE -->
-    <a href="index.html">
+    <a href="/">
       <figure class="logo-mobile">
         <img src="/static/images/logo_mobile.png" alt="logo-mobile">
       </figure>
@@ -28,9 +28,12 @@
       <span class="icon-user"></span>
     </div>
     <!-- /MOBILE ACCOUNT OPTIONS HANDLER -->
-
-    <!-- USER BOARD -->
     <div class="user-board">
+
+
+    {% if signedin %}
+    <!-- USER BOARD -->
+
       <!-- USER QUICKVIEW -->
       <div class="user-quickview">
         <!-- USER AVATAR -->
@@ -43,7 +46,6 @@
         </div>
         </a>
         <!-- /USER AVATAR -->
-
         <!-- USER INFORMATION -->
         <p class="user-name">0xFBd610...</p>
         <!-- SVG ARROW -->
@@ -53,7 +55,6 @@
         <!-- /SVG ARROW -->
         <p class="user-money">745.00 Darch</p>
         <!-- /USER INFORMATION -->
-
         <!-- DROPDOWN -->
         <ul class="dropdown small hover-effect closed">
           <li class="dropdown-item">
@@ -69,20 +70,21 @@
       </div>
       <!-- /USER QUICKVIEW -->
 
-      <!-- ACCOUNT INFORMATION -->
-      <div class="account-information">
-
-      </div>
-      <!-- /ACCOUNT INFORMATION -->
-
-      <!-- ACCOUNT ACTIONS -->
-      <div class="account-actions">
-        <a href="#" class="button primary">Become a Seller</a>
-        <a href="#" class="button secondary">Logout</a>
-      </div>
-      <!-- /ACCOUNT ACTIONS -->
-    </div>
     <!-- /USER BOARD -->
+
+    {% else%}
+
+          <div class="account-actions">
+              <a href="/register" class="button primary">Register</a>
+              <a href="/login" class="button secondary">Login</a>
+            </div>
+
+
+      {% endif %}
+
+
+    </div>
+
   </header>
 </div>
 <!-- /HEADER -->

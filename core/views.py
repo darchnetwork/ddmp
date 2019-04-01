@@ -31,7 +31,20 @@ from ecies import encrypt, decrypt
 
 @csrf_exempt
 def landing(request):
+    signedin = False
     return render(request, "landing.html", locals())
+
+
+@csrf_exempt
+def register(request):
+    signedin = False
+    return render(request, "register.html", locals())
+
+
+@csrf_exempt
+def login(request):
+    signedin = False
+    return render(request, "login.html", locals())
 
 
 
