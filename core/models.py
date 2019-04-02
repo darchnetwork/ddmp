@@ -8,6 +8,7 @@ import pytz, datetime
 class User(models.Model):
     name = models.CharField(max_length=1000,blank=True , null=True)
     surname = models.CharField(max_length=1000,blank=True , null=True)
+    username = models.CharField(max_length=1000,blank=True , null=True)
     email = models.EmailField(max_length=1000,blank=True , null=True)
     password = models.CharField(max_length=1000,blank=True , null=True)
     ethereumaddress = models.CharField(max_length=1000,blank=True, null=True)

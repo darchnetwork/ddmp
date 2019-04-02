@@ -8,6 +8,7 @@ coincurve==11.0.0
 cytoolz==0.9.0.1
 Django==2.1.7
 ecdsa==0.13
+eciespy==0.1.5
 eth-abi==1.3.0
 eth-account==0.3.0
 eth-hash==0.2.0
@@ -29,6 +30,7 @@ pycparser==2.19
 pycryptodome==3.7.3
 pycryptodomex==3.7.3
 pyethash==0.1.27
+pyotp==2.2.7
 pysha3==1.0.2
 python-dateutil==2.8.0
 pytz==2018.9

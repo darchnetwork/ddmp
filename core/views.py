@@ -27,12 +27,44 @@ import codecs, ecdsa
 from Crypto.Hash import keccak
 from ecies.utils import generate_eth_key, generate_key
 from ecies import encrypt, decrypt
-
+import pyotp
 
 @csrf_exempt
 def landing(request):
-    signedin = False
+    try:
+        userid = request.session['loginstatus']
+    except KeyError:
+        signedin = False
+        return render(request, "landing.html", locals())
+    signedin = True
+    acc = User.objects.get(id=int(userid))
     return render(request, "landing.html", locals())
+
+
+@csrf_exempt
+def new(request):
+    try:
+        userid = request.session['loginstatus']
+    except KeyError:
+        signedin = False
+        return render(request, "new.html", locals())
+    signedin = True
+    acc = User.objects.get(id=int(userid))
+    return render(request, "new.html", locals())
+
+@csrf_exempt
+def profile(request):
+    try:
+        userid = request.session['loginstatus']
+    except KeyError:
+        signedin = False
+        return render(request, "dashboard/profile.html", locals())
+    signedin = True
+    acc = User.objects.get(id=int(userid))
+    return render(request, "dashboard/profile.html", locals())
+
+
+
 
 
 @csrf_exempt
@@ -43,9 +75,88 @@ def register(request):
 
 @csrf_exempt
 def login(request):
-    signedin = False
+    try:
+        userid = request.session['loginstatus']
+    except KeyError:
+        signedin = False
+        return render(request, "login.html", locals())
+
+    signedin = True
     return render(request, "login.html", locals())
 
+
+
+
+@csrf_exempt
+def logout(request):
+    request.session.clear()
+    return HttpResponseRedirect('/')
+
+@csrf_exempt
+def regmeinplease(request):
+    if request.method == 'POST':
+        datareponse = {}
+        email = request.POST.get('email')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        private_key = utils.sha3(os.urandom(4096))
+        raw_address = utils.privtoaddr(private_key)
+        addressif = address.to_normalized_address(raw_address)
+        keyether = utils.encode_hex(private_key)
+        sk = SigningKey.from_string(bytes.fromhex(keyether), curve=SECP256k1)
+        public_key = sk.get_verifying_key() #public_key
+        pkey = public_key.to_string().hex().strip()
+        randomstring = id_generator(10, "ABCDEFGJKLMNOPRSTUVYZ1234567890")
+        mailverify = id_generator(10, "ABCDEFGJKLMNOPRSTUVYZ1234567890")
+        gauth = pyotp.random_base32()
+        addnewuser = User(email=email,
+        username=username,
+        password=password,
+        ethereumaddress=addressif,
+        privatekey=keyether,
+        publickey=pkey,
+        moneycode=randomstring,
+        random_base32=gauth,
+        mailverifycode=mailverify,
+        twofactorenabled=False)
+        addnewuser.save()
+        datareponse["response"] = "ok"
+        return HttpResponse(json.dumps(datareponse), content_type = "application/json")
+    else:
+        datareponse["info"] = "Only Post RQ"
+        datareponse["response"] = "none"
+        return HttpResponse(json.dumps(datareponse), content_type = "application/json")
+
+
+
+@csrf_exempt
+def checklogin(request):
+    if request.method == 'POST':
+        datareponse = {}
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        if username and password:
+            try:
+                acc = User.objects.get(username=username)
+            except User.DoesNotExist:
+                datareponse["info"] = "Username or password problem"
+                datareponse["response"] = "none"
+                return HttpResponse(json.dumps(datareponse), content_type = "application/json")
+            if acc.password == password:
+                    request.session['loginstatus'] = acc.id
+                    datareponse["info"] = "Login Successfully"
+                    datareponse["response"] = "ok"
+                    return HttpResponse(json.dumps(datareponse), content_type = "application/json")
+
+            else:
+                datareponse["info"] = "Failed password"
+                datareponse["response"] = "none"
+                return HttpResponse(json.dumps(datareponse), content_type = "application/json")
+
+        else:
+            datareponse["info"] = "Fill username and password"
+            datareponse["response"] = "none"
+            return HttpResponse(json.dumps(datareponse), content_type = "application/json")
 
 
 
@@ -64,12 +175,12 @@ def generate(request):
     decryptedvalue = decrypt(keyether, encryptedval)
     print("decrypted value is here",decryptedvalue)
     #public_key = public_key.to_string().hex()
-    return render(request, "skeleton.html", locals())
+    return render(request, "homomorphic/skeleton.html", locals())
 
 
 @csrf_exempt
 def encryption(request):
-    return render(request, "enc.html", locals())
+    return render(request, "homomorphic/enc.html", locals())
 
 @csrf_exempt
 def encpost(request):
@@ -96,7 +207,7 @@ def encpost(request):
 
 @csrf_exempt
 def decryption(request):
-    return render(request, "dec.html", locals())
+    return render(request, "homomorphic/dec.html", locals())
 
 @csrf_exempt
 def depost(request):
@@ -121,3 +232,8 @@ def depost(request):
         return HttpResponse(json.dumps(datareponse), content_type = "application/json")
     else:
         return HttpResponse(json.dumps(datareponse), content_type = "application/json")
+
+
+
+def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
+    return ''.join(random.choice(chars) for _ in range(size))

@@ -2,9 +2,9 @@
 <div class="header-wrap">
   <header>
     <!-- LOGO -->
-    <a href="index.html">
+    <a href="/">
       <figure class="logo">
-        <img src="/static/images/logo.png" alt="logo">
+            <img class="blockimage" alt="logo">
       </figure>
     </a>
     <!-- /LOGO -->
@@ -37,32 +37,33 @@
       <!-- USER QUICKVIEW -->
       <div class="user-quickview">
         <!-- USER AVATAR -->
-        <a href="author-profile.html">
+        <a href="#">
         <div class="outer-ring">
           <div class="inner-ring"></div>
-          <figure class="user-avatar">
-            <img src="/static/images/avatars/avatar_01.jpg" alt="avatar">
+          <figure class="user-avatar" >
+             <img class="blockimage" style="border-radius: 45px;"  alt="avatar"> 
           </figure>
         </div>
         </a>
         <!-- /USER AVATAR -->
         <!-- USER INFORMATION -->
-        <p class="user-name">0xFBd610...</p>
+        <p class="user-name">{{ acc.ethereumaddress|truncatechars:12 }}</p>
         <!-- SVG ARROW -->
         <svg class="svg-arrow">
           <use xlink:href="#svg-arrow"></use>
         </svg>
         <!-- /SVG ARROW -->
-        <p class="user-money">745.00 Darch</p>
+        <p class="user-money">{{ acc.darchbalance }} Darch</p>
         <!-- /USER INFORMATION -->
         <!-- DROPDOWN -->
         <ul class="dropdown small hover-effect closed">
           <li class="dropdown-item">
             <div class="dropdown-triangle"></div>
-            <a href="author-profile.html">Profile Page</a>
+            <a href="/profile">Profile Page</a>
           </li>
+
           <li class="dropdown-item">
-            <a href="dashboard-settings.html">Account Settings</a>
+            <a href="/logout">Logout</a>
           </li>
 
         </ul>

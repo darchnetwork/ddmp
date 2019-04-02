@@ -26,22 +26,18 @@ urlpatterns = [
     url(r'^register/$', core.views.register, name='register'),
     url(r'^login/$', core.views.login, name='login'),
 
+    url(r'^new/$', core.views.new, name='new'),
+    url(r'^profile/$', core.views.profile, name='profile'),
+
 
     url(r'^generate/$', core.views.generate, name='generate'),
     url(r'^encryption/$', core.views.encryption, name='encryption'),
     url(r'^decryption/$', core.views.decryption, name='decryption'),
-
     url(r'^encpost/$', core.views.encpost, name='encpost'),
     url(r'^depost/$', core.views.depost, name='depost'),
-
-
-
-
-
-
-
-
-
+    url(r'^regmeinplease/$', core.views.regmeinplease, name='regmeinplease'),
+    url(r'^checklogin/$', core.views.checklogin, name='checklogin'),
+    url(r'^logout/$', core.views.logout, name='logout'),
 
 ]
 

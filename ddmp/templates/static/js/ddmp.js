@@ -77,6 +77,70 @@ $(document).ready(function() {
 
 
 
+    $("#regmeinbro").click(function (){
+      var email = $("#email").val();
+      var username = $("#username").val();
+      var password = $("#password").val();
+
+      $("#resultreg").html("<i class='fa fa-spinner fa-spin'></i>  Please wait...");
+
+      $.ajax({
+        type:'POST',
+        url:'/regmeinplease/',
+        data:{email: email, username:username,password:password, csrfmiddlewaretoken:csrftoken},
+        success:function(msg){
+          console.log(msg);
+          if (msg["response"] == "ok") {
+            $("#resultreg").text('Registeristration successfully, now you can login.');
+          }
+          else {
+            $("#resultreg").text(msg["info"]);
+          }
+        },
+      });
+    });
+
+
+    $("#logmeinpleasebro").click(function (){
+      var username = $("#username").val();
+      var password = $("#password").val();
+
+
+      $("#resultreg").html("<i class='fa fa-spinner fa-spin'></i>  Please wait...");
+
+      $.ajax({
+        type:'POST',
+        url:'/checklogin/',
+        data:{username:username,password:password, csrfmiddlewaretoken:csrftoken},
+        success:function(msg){
+          console.log(msg);
+          if (msg["response"] == "ok") {
+            window.location.href = "/";
+          }
+          else {
+            $("#resultreg").text(msg["info"]);
+          }
+        },
+      });
+    });
+
+
+
+    var icon = blockies.create({ // All options are optional
+    seed: 'yasinaktimur', // seed used to generate icon data, default: random
+    //color: '#dfe', // to manually specify the icon color, default: random
+    //bgcolor: '#aaa', // choose a different background color, default: random
+    size: 15, // width/height of the icon in blocks, default: 8
+    scale: 3, // width/height of each block in pixels, default: 4
+    //spotcolor: '#000' // each pixel has a 13% chance of being of a third color,
+    // default: random. Set to -1 to disable it. These "spots" create structures
+    // that look like eyes, mouths and noses.
+  });
+  console.log(icon);
+   $('.blockimage').attr('src', icon.toDataURL());
+   //$(".blockimage").append(icon);
+
+//#document.body.appendChild(icon); // icon is a canvas element
 
 
 
