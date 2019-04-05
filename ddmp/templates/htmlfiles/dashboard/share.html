@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/static/css/vendor/simple-line-icons.css">
+	<link rel="stylesheet" href="/static/css/style.css">
+	<!-- favicon -->
+	<link rel="icon" href="favicon.ico">
+	<title>Dashboard</title>
+</head>
+<body>
+
+
+	{% include "dashboard/imports/sidemenu.html" %}
+		{% include "dashboard/imports/sbody.html" %}
+
+
+	<div class="shadow-film closed"></div>
+
+<!-- SVG ARROW -->
+<svg style="display: none;">
+	<symbol id="svg-arrow" viewBox="0 0 3.923 6.64014" preserveAspectRatio="xMinYMin meet">
+		<path d="M3.711,2.92L0.994,0.202c-0.215-0.213-0.562-0.213-0.776,0c-0.215,0.215-0.215,0.562,0,0.777l2.329,2.329
+			L0.217,5.638c-0.215,0.215-0.214,0.562,0,0.776c0.214,0.214,0.562,0.215,0.776,0l2.717-2.718C3.925,3.482,3.925,3.135,3.711,2.92z"/>
+	</symbol>
+</svg>
+<!-- /SVG ARROW -->
+
+<!-- SVG PLUS -->
+<svg style="display: none;">
+	<symbol id="svg-plus" viewBox="0 0 13 13" preserveAspectRatio="xMinYMin meet">
+		<rect x="5" width="3" height="13"/>
+		<rect y="5" width="13" height="3"/>
+	</symbol>
+</svg>
+<!-- /SVG PLUS -->
+
+<!-- SVG MINUS -->
+<svg style="display: none;">
+	<symbol id="svg-minus" viewBox="0 0 13 13" preserveAspectRatio="xMinYMin meet">
+		<rect y="5" width="13" height="3"/>
+	</symbol>
+</svg>
+<!-- /SVG MINUS -->
+
+<!-- jQuery -->
+<script src="/static/js/vendor/jquery-3.1.0.min.js"></script>
+<!-- XM Pie Chart -->
+<script src="/static/js/vendor/jquery.xmpiechart.min.js"></script>
+<!-- Side Menu -->
+<script src="/static/js/side-menu.js"></script>
+<!-- Dashboard Header -->
+<script src="/static/js/dashboard-header.js"></script>
+<script>
+  function donate() {
+
+
+
+
+
+    if (typeof web3 !== 'object') {
+      alert('MetaMask not loaded, try later');
+      return;
+    }
+
+  const web4 = new Web3(web3.currentProvider);
+
+	var darchContract = web3.eth.contract([{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"num_of_transmit","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_value","type":"uint256"}],"name":"approve","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"string"}],"name":"num_of_product_requests","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"fundsWallet","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"string"}],"name":"RWlist","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_pid","type":"uint256"}],"name":"getpnamefromid","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"pname","type":"string"}],"name":"checkProductExist","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_pid","type":"string"},{"name":"index","type":"uint256"}],"name":"getTransmits","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"pname","type":"string"}],"name":"getProductFromName","outputs":[{"name":"","type":"string"},{"name":"","type":"string"},{"name":"","type":"string"},{"name":"","type":"string"},{"name":"","type":"string"},{"name":"","type":"string"},{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"numberofProduct","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"string"}],"name":"BWlist","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_value","type":"uint256"}],"name":"burn","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_wallet","type":"string"}],"name":"checkWalletexist","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_listid","type":"uint256"}],"name":"get_product_from_pid","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"num_of_request","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"pname","type":"string"},{"name":"index","type":"uint256"}],"name":"cancelTransmitProduct","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"uHeadline","type":"string"},{"name":"uExplain","type":"string"},{"name":"uImageList","type":"string"},{"name":"uShowDemo","type":"string"},{"name":"uCate","type":"string"},{"name":"uPrice","type":"uint256"},{"name":"pname","type":"string"}],"name":"SharenewProduct","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"pname","type":"string"},{"name":"pubkey","type":"string"}],"name":"setNewRequest","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"string"},{"name":"index","type":"uint256"}],"name":"get_public_key","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"balanceOf","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_value","type":"uint256"}],"name":"burnFrom","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"x","type":"address"}],"name":"WallettoString","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_walletandid","type":"string"}],"name":"checkBWalletexist","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"pname","type":"string"},{"name":"index","type":"uint256"},{"name":"smessage","type":"string"}],"name":"setTransmitProduct","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_pid","type":"string"}],"name":"num_of_product_transmit","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"listofproducts","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"listoftransmits","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_value","type":"uint256"},{"name":"_extraData","type":"bytes"}],"name":"approveAndCall","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"},{"name":"","type":"address"}],"name":"allowance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"listofrequests","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_listid","type":"uint256"}],"name":"get_transmits_from_pid","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"initialSupply","type":"uint256"},{"name":"tokenName","type":"string"},{"name":"tokenSymbol","type":"string"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"to","type":"address"},{"indexed":false,"name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_owner","type":"address"},{"indexed":true,"name":"_spender","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"},{"indexed":false,"name":"value","type":"uint256"}],"name":"Burn","type":"event"}]);
+
+	var Darch = darchContract.at('0xC4E848529e436C848144Eafb0387A6faEba94a65');
+
+
+  const amount = parseFloat(0.001);
+
+    if (isNaN(amount) || amount < 0) {
+      alert('Please, enter valid donation size!');
+      return;
+    }
+
+   if (!web4.eth.accounts[0]) {
+     alert('Please, login to MetaMask first');
+     return;
+   }
+
+
+	 	var pname = $("#pname").val();
+ 		var pexplain = $("#pexplain").val();
+ 		var cplink = $("#cplink").val();
+ 		var demourl = $("#demourl").val();
+ 		var catename = $("#catename").val();
+ 		var pprice = $("#pprice").val();
+ 		var puname = $("#puname").val();
+
+		console.log("pname", pname);
+			console.log("pexplain",pexplain);
+				console.log("cplink",cplink);
+					console.log("demourl",demourl);
+						console.log("catename",catename);
+							console.log("puname",puname);
+
+	Darch.SharenewProduct(pname,pexplain,cplink,demourl,catename,parseInt(pprice),puname, function(error, result){
+			 if(!error){
+	 console.log(result);
+	 } else
+	console.error(error);
+});
+
+
+
+
+}
+
+</script>
+
+
+</body>
+</html>

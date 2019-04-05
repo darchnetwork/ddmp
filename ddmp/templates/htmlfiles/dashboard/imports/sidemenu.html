@@ -1,0 +1,124 @@
+<!-- SIDE MENU -->
+<div id="dashboard-options-menu" class="side-menu dashboard left closed">
+
+      <!-- SVG PLUS -->
+  <svg class="svg-plus">
+    <use xlink:href="#svg-plus"></use>
+  </svg>
+  <!-- /SVG PLUS -->
+
+  <!-- SIDE MENU HEADER -->
+  <div class="side-menu-header">
+    <!-- USER QUICKVIEW -->
+    <div class="user-quickview">
+      <!-- USER AVATAR -->
+      <a href="#">
+      <div class="outer-ring">
+        <div class="inner-ring"></div>
+        <figure class="user-avatar">
+          <img src="/static/images/avatars/avatar_01.jpg" alt="avatar">
+        </figure>
+      </div>
+      </a>
+      <!-- /USER AVATAR -->
+
+      <!-- USER INFORMATION -->
+      <p class="user-name">{{ acc.ethereumaddress|truncatechars:15 }}</p>
+      <p class="user-money">{{ acc.darchbalance }}</p>
+      <!-- /USER INFORMATION -->
+    </div>
+    <!-- /USER QUICKVIEW -->
+  </div>
+  <!-- /SIDE MENU HEADER -->
+
+  <!-- SIDE MENU TITLE -->
+  <p class="side-menu-title">Your Account</p>
+  <!-- /SIDE MENU TITLE -->
+
+  <!-- DROPDOWN -->
+  <ul class="dropdown dark hover-effect interactive">
+    <!-- DROPDOWN ITEM -->
+    <li class="dropdown-item active">
+      <a href="#">
+                  <span class="sl-icon icon-settings"></span>
+                  Account Settings
+              </a>
+    </li>
+    <!-- /DROPDOWN ITEM -->
+
+
+
+
+    <!-- DROPDOWN ITEM -->
+    <li class="dropdown-item">
+      <a href="#">
+                  <span class="sl-icon icon-credit-card"></span>
+                  Buy Darch
+              </a>
+    </li>
+    <!-- /DROPDOWN ITEM -->
+  </ul>
+  <!-- /DROPDOWN -->
+
+
+       <!-- SIDE MENU TITLE -->
+  <p class="side-menu-title">Author Tools</p>
+  <!-- /SIDE MENU TITLE -->
+
+  <!-- DROPDOWN -->
+  <ul class="dropdown dark hover-effect">
+
+
+
+
+    <!-- DROPDOWN ITEM -->
+    <li class="dropdown-item">
+      <a href="https://add.bico.media" target="_blank">
+                  <span class="sl-icon icon-arrow-up-circle"></span>
+                  Bico.media
+              </a>
+    </li>
+    <!-- /DROPDOWN ITEM -->
+
+    <!-- DROPDOWN ITEM -->
+    <li class="dropdown-item">
+      <a href="https://send.firefox.com" target="_blank">
+                  <span class="sl-icon icon-arrow-up-circle"></span>
+                  Firefox send
+              </a>
+    </li>
+    <!-- /DROPDOWN ITEM -->
+
+
+
+    <!-- DROPDOWN ITEM -->
+    <li class="dropdown-item">
+      <a href="/new">
+                  <span class="sl-icon icon-arrow-up-circle"></span>
+                  Share new Item
+              </a>
+    </li>
+    <!-- /DROPDOWN ITEM -->
+
+    <!-- DROPDOWN ITEM -->
+    <li class="dropdown-item">
+      <a href="#">
+                  <span class="sl-icon icon-folder-alt"></span>
+                  Manage Items
+              </a>
+    </li>
+    <!-- /DROPDOWN ITEM -->
+
+          <!-- DROPDOWN ITEM -->
+    <li class="dropdown-item">
+      <a href="#">
+                  <span class="sl-icon icon-wallet"></span>
+                  Withdrawals
+              </a>
+    </li>
+    <!-- /DROPDOWN ITEM -->
+  </ul>
+  <!-- /DROPDOWN -->
+
+      <a href="/logout" class="button medium secondary">Logout</a>
+</div>

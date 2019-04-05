@@ -125,9 +125,9 @@ $(document).ready(function() {
     });
 
 
-
+  
     var icon = blockies.create({ // All options are optional
-    seed: 'yasinaktimur', // seed used to generate icon data, default: random
+    seed: ethereumaddress, // seed used to generate icon data, default: random
     //color: '#dfe', // to manually specify the icon color, default: random
     //bgcolor: '#aaa', // choose a different background color, default: random
     size: 15, // width/height of the icon in blocks, default: 8

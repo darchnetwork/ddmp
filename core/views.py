@@ -47,10 +47,10 @@ def new(request):
         userid = request.session['loginstatus']
     except KeyError:
         signedin = False
-        return render(request, "new.html", locals())
+        return render(request, "dashboard/share.html", locals())
     signedin = True
     acc = User.objects.get(id=int(userid))
-    return render(request, "new.html", locals())
+    return render(request, "dashboard/share.html", locals())
 
 @csrf_exempt
 def profile(request):
