@@ -77,4 +77,9 @@ Home Alerts -->
 <script type="text/javascript">
 var ethereumaddress   = "{{ acc.ethereumaddress|escapejs }}";
 </script>
+
+
+{% if landingbool%}
+<script type="text/javascript" src="/static/js/landing.js?v=1"></script>
+{% endif %}
 <script type="text/javascript" src="/static/js/ddmp.js?v=2"></script>

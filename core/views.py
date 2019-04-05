@@ -31,6 +31,7 @@ import pyotp
 
 @csrf_exempt
 def landing(request):
+    landingbool = True
     try:
         userid = request.session['loginstatus']
     except KeyError:
