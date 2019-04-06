@@ -1,4 +1,63 @@
-$(document).ready(function() {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/static/css/vendor/simple-line-icons.css">
+	<link rel="stylesheet" href="/static/css/style.css">
+	<!-- favicon -->
+	<link rel="icon" href="favicon.ico">
+	<title>Dashboard</title>
+</head>
+<body>
+
+
+	{% include "dashboard/imports/sidemenu.html" %}
+		{% include "dashboard/imports/ibody.html" %}
+
+
+	<div class="shadow-film closed"></div>
+
+<!-- SVG ARROW -->
+<svg style="display: none;">
+	<symbol id="svg-arrow" viewBox="0 0 3.923 6.64014" preserveAspectRatio="xMinYMin meet">
+		<path d="M3.711,2.92L0.994,0.202c-0.215-0.213-0.562-0.213-0.776,0c-0.215,0.215-0.215,0.562,0,0.777l2.329,2.329
+			L0.217,5.638c-0.215,0.215-0.214,0.562,0,0.776c0.214,0.214,0.562,0.215,0.776,0l2.717-2.718C3.925,3.482,3.925,3.135,3.711,2.92z"/>
+	</symbol>
+</svg>
+<!-- /SVG ARROW -->
+
+<!-- SVG PLUS -->
+<svg style="display: none;">
+	<symbol id="svg-plus" viewBox="0 0 13 13" preserveAspectRatio="xMinYMin meet">
+		<rect x="5" width="3" height="13"/>
+		<rect y="5" width="13" height="3"/>
+	</symbol>
+</svg>
+<!-- /SVG PLUS -->
+
+<!-- SVG MINUS -->
+<svg style="display: none;">
+	<symbol id="svg-minus" viewBox="0 0 13 13" preserveAspectRatio="xMinYMin meet">
+		<rect y="5" width="13" height="3"/>
+	</symbol>
+</svg>
+<!-- /SVG MINUS -->
+
+<!-- jQuery -->
+<script src="/static/js/vendor/jquery-3.1.0.min.js"></script>
+<!-- XM Pie Chart -->
+<script src="/static/js/vendor/jquery.xmpiechart.min.js"></script>
+<!-- Side Menu -->
+<script src="/static/js/side-menu.js"></script>
+<!-- Dashboard Header -->
+<script src="/static/js/dashboard-header.js"></script>
+<script>
+  function donate() {
+
+
+
+
 
     if (typeof web3 !== 'object') {
       alert('MetaMask not loaded, try later');
@@ -25,125 +84,35 @@ $(document).ready(function() {
    }
 
 
-   Darch.numberofProduct(function(error, result){ if(!error){
-        var numberofproduct = result.c[0];
-        console.log("result", numberofproduct);
-        for (const x of Array(numberofproduct).keys()) {
-            console.log("im here : ",x);
-            getnamesBro(x);
-        }
-        }
-     else
-       console.error(error);
-     });
+	 	var pname = $("#pname").val();
+ 		var pexplain = $("#pexplain").val();
+ 		var cplink = $("#cplink").val();
+ 		var demourl = $("#demourl").val();
+ 		var catename = $("#catename").val();
+ 		var pprice = $("#pprice").val();
+ 		var puname = $("#puname").val();
 
+		console.log("pname", pname);
+			console.log("pexplain",pexplain);
+				console.log("cplink",cplink);
+					console.log("demourl",demourl);
+						console.log("catename",catename);
+							console.log("puname",puname);
 
-     function getnamesBro(getid){
-       console.log("twiliowwww", getid);
-
-
-       Darch.getpnamefromid(getid,function(error, result){
-         if(!error){
-           //console.log("getpnamefromid",result);
-           getallprodoctDetails(result);
-
-            } else
-            console.error(error);
-          });
-     }
-
-     // getProductFromName
-
-
-     function getallprodoctDetails(jjpnamejj){
-       console.log("twiliowwww", jjpnamejj);
-
-
-       Darch.getProductFromName(jjpnamejj,function(error, result){
-         if(!error){
-           console.log("zero- time",result[0]);
-           console.log("one - price",result[1]);
-           console.log("two - header",result[2]);
-           console.log("three - explain",result[3]);
-           console.log("four - cover photo",result[4]);
-           console.log("five - live url",result[5]);
-           console.log("six - tag",result[6]);
-
-           var explaintedxt = result[3];
-           var smalltext = explaintedxt.substring(0, 138) + "...";
-
-           $("#pl-1").prepend('<div class="product-item column">'+
-             '<div class="product-preview-actions">'+
-               '<figure class="product-preview-image">'+
-                 '<div style="height:150px;width:258px;background: lightblue url('+result[4]+');background-repeat: no-repeat; background-size: 258px 150px;" ></div>'+
-               '</figure>'+
-               '<div class="preview-actions">'+
-                '<div class="preview-action">'+
-                   '<a href="'+jjpnamejj+'">'+
-                     '<div class="circle tiny primary">'+
-                       '<span class="icon-tag"></span>'+
-                     '</div>'+
-                   '</a>'+
-                   '<a href="'+jjpnamejj+'">'+
-                     '<p>Go to Item</p>'+
-                   '</a>'+
-                 '</div>'+
-                 '<div class="preview-action">'+
-                   '<a href="#">'+
-                     '<div class="circle tiny secondary">'+
-                       '<span class="icon-heart"></span>'+
-                     '</div>'+
-                   '</a>'+
-                   '<a href="'+jjpnamejj+'">'+
-                    ' <p>Favourites +</p>'+
-                   '</a>'+
-                 '</div>'+
-               '</div>'+
-             '</div>'+
-            '<div class="product-info">'+
-            '<a href="'+jjpnamejj+'"><p class="text-header">'+result[2]+'</p></a>'+
-            '<p class="product-description">'+smalltext+'</p>'+
-            '<a href="'+jjpnamejj+'">'+
-            '<p class="category primary">'+result[6]+'</p>'+
-            '</a>'+
-            '<p class="price"><span>DARCH  </span>'+result[1]+'</p></div>'+
-            '<hr class="line-separator">'+
-            '</div>');
-
-
-
-            } else
-            console.error(error);
-          });
-     }
-
-
-
-
-
-
-  // Darch.getInstructor(function(error, result){
-  //   if(!error){
-  //     $(“#instructor”).html(result[0]+’ (‘+result[1]+’ years old)’);
-  //     console.log(result);
-  //     }
-  //  else
-  //    console.error(error);
-  //  });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	Darch.SharenewProduct(pname,pexplain,cplink,demourl,catename,parseInt(pprice),puname, function(error, result){
+			 if(!error){
+	 console.log(result);
+	 } else
+	console.error(error);
 });
+
+
+
+
+}
+
+</script>
+
+
+</body>
+</html>

@@ -54,6 +54,19 @@ def new(request):
     return render(request, "dashboard/share.html", locals())
 
 @csrf_exempt
+def item(request, itemname):
+    print("itemname",itemname)
+    itembool = True
+    try:
+        userid = request.session['loginstatus']
+    except KeyError:
+        signedin = False
+        return render(request, "item.html", locals())
+    signedin = True
+    acc = User.objects.get(id=int(userid))
+    return render(request, "item.html", locals())
+
+@csrf_exempt
 def profile(request):
     try:
         userid = request.session['loginstatus']

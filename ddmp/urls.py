@@ -38,6 +38,8 @@ urlpatterns = [
     url(r'^regmeinplease/$', core.views.regmeinplease, name='regmeinplease'),
     url(r'^checklogin/$', core.views.checklogin, name='checklogin'),
     url(r'^logout/$', core.views.logout, name='logout'),
+    url(r'^(?P<itemname>\w+)/$', core.views.item, name='item'),
+
 
 ]
 
