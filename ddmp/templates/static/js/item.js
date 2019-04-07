@@ -24,42 +24,14 @@ $(document).ready(function() {
      return;
    }
 
-
-   Darch.numberofProduct(function(error, result){ if(!error){
-        var numberofproduct = result.c[0];
-        console.log("result", numberofproduct);
-        for (const x of Array(numberofproduct).keys()) {
-            console.log("im here : ",x);
-            getnamesBro(x);
-        }
-        }
-     else
-       console.error(error);
-     });
+   //itemnameify
 
 
-     function getnamesBro(getid){
-       console.log("twiliowwww", getid);
+     function getallprodoctDetails(itemnameify){
+       console.log("twiliowwww", itemnameify);
 
 
-       Darch.getpnamefromid(getid,function(error, result){
-         if(!error){
-           //console.log("getpnamefromid",result);
-           getallprodoctDetails(result);
-
-            } else
-            console.error(error);
-          });
-     }
-
-     // getProductFromName
-
-
-     function getallprodoctDetails(jjpnamejj){
-       console.log("twiliowwww", jjpnamejj);
-
-
-       Darch.getProductFromName(jjpnamejj,function(error, result){
+       Darch.getProductFromName(itemnameify,function(error, result){
          if(!error){
            console.log("zero- time",result[0]);
            console.log("one - price",result[1]);
@@ -72,43 +44,12 @@ $(document).ready(function() {
            var explaintedxt = result[3];
            var smalltext = explaintedxt.substring(0, 138) + "...";
 
-           $("#pl-1").prepend('<div class="product-item column">'+
-             '<div class="product-preview-actions">'+
-               '<figure class="product-preview-image">'+
-                 '<div style="height:150px;width:258px;background: lightblue url('+result[4]+');background-repeat: no-repeat; background-size: 258px 150px;" ></div>'+
-               '</figure>'+
-               '<div class="preview-actions">'+
-                '<div class="preview-action">'+
-                   '<a href="'+jjpnamejj+'">'+
-                     '<div class="circle tiny primary">'+
-                       '<span class="icon-tag"></span>'+
-                     '</div>'+
-                   '</a>'+
-                   '<a href="'+jjpnamejj+'">'+
-                     '<p>Go to Item</p>'+
-                   '</a>'+
-                 '</div>'+
-                 '<div class="preview-action">'+
-                   '<a href="#">'+
-                     '<div class="circle tiny secondary">'+
-                       '<span class="icon-heart"></span>'+
-                     '</div>'+
-                   '</a>'+
-                   '<a href="'+jjpnamejj+'">'+
-                    ' <p>Favourites +</p>'+
-                   '</a>'+
-                 '</div>'+
-               '</div>'+
-             '</div>'+
-            '<div class="product-info">'+
-            '<a href="'+jjpnamejj+'"><p class="text-header">'+result[2]+'</p></a>'+
-            '<p class="product-description">'+smalltext+'</p>'+
-            '<a href="'+jjpnamejj+'">'+
-            '<p class="category primary">'+result[6]+'</p>'+
-            '</a>'+
-            '<p class="price"><span>DARCH  </span>'+result[1]+'</p></div>'+
-            '<hr class="line-separator">'+
-            '</div>');
+           $("#post-title").text(result[2]);
+           $("#post-explain").text(result[3]);
+           $(".djangoimage").attr("data-mfp-src", result[4]);
+           $("#imagedjang").css('background-image', 'url(' + result[4] + ')');
+           $("#pricearea").html(result[1] + '<span style="font-size:10px;color:white;">DARCH</span>');
+
 
 
 
@@ -117,23 +58,8 @@ $(document).ready(function() {
           });
      }
 
-   //ethereumaddress
 
-    Darch.balanceOf(ethereumaddress,  function(error, result){
-       if(!error){
-
-         var correctbalance = result/1000000000000000000
-
-         console.log("balanceOf", ethereumaddress + ' and ' + correctbalance  +'  and  '+ result);
-
-
-         $("#user-money").text(correctbalance + ' Darch');
-
-         }
-      else
-        console.error(error);
-     });
-
+  getallprodoctDetails(itemnameify);
 
 
 
