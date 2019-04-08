@@ -49,7 +49,7 @@ $(document).ready(function() {
            $(".djangoimage").attr("data-mfp-src", result[4]);
            $("#imagedjang").css('background-image', 'url(' + result[4] + ')');
            $("#pricearea").html(result[1] + '<span style="font-size:10px;color:white;">DARCH</span>');
-
+           $("#live-preview").attr("href", result[5])
 
 
 
@@ -73,6 +73,27 @@ $(document).ready(function() {
   //  });
 
 
+
+
+  $("#purchaseplease").click(function (){
+
+
+      // setNewRequest
+
+
+       Darch.setNewRequest(itemnameify, userspublickey, function(error, result){
+          if(!error){
+            console.log(result); }
+            else
+            console.error(error);
+          });
+
+
+
+
+
+
+  });
 
 
 
