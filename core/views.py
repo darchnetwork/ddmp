@@ -66,6 +66,19 @@ def item(request, itemname):
     acc = User.objects.get(id=int(userid))
     return render(request, "item.html", locals())
 
+
+@csrf_exempt
+def showrequests(request, itemname):
+    managebool = True
+    try:
+        userid = request.session['loginstatus']
+    except KeyError:
+        signedin = False
+        return render(request, "dashboard/showreqs.html", locals())
+    signedin = True
+    acc = User.objects.get(id=int(userid))
+    return render(request, "dashboard/showreqs.html", locals())
+
 @csrf_exempt
 def profile(request):
     try:
