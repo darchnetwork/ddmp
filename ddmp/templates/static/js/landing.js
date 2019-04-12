@@ -106,7 +106,7 @@ $(document).ready(function() {
             '<a href="'+jjpnamejj+'">'+
             '<p class="category primary">'+result[6]+'</p>'+
             '</a>'+
-            '<p class="price"><span>DARCH  </span>'+result[1]+'</p></div>'+
+            '<p class="price"><span>DARCH  </span>'+web4.fromWei(result[1],'ether')+'</p></div>'+
             '<hr class="line-separator">'+
             '</div>');
 
@@ -122,7 +122,7 @@ $(document).ready(function() {
     Darch.balanceOf(ethereumaddress,  function(error, result){
        if(!error){
 
-         var correctbalance = result/1000000000000000000
+         var correctbalance =  web4.fromWei(result, 'ether'); //result/1000000000000000000
 
          console.log("balanceOf", ethereumaddress + ' and ' + correctbalance  +'  and  '+ result);
 

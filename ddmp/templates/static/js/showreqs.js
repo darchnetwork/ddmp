@@ -1,3 +1,23 @@
+$(document).ready(function() {
+// using jQuery
+function getCookie(name) {
+	var cookieValue = null;
+	if (document.cookie && document.cookie != '') {
+		var cookies = document.cookie.split(';');
+		for (var i = 0; i < cookies.length; i++) {
+			var cookie = jQuery.trim(cookies[i]);
+			// Does this cookie string begin with the name we want?
+			if (cookie.substring(0, name.length + 1) == (name + '=')) {
+				cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+				break;
+			}
+		}
+	}
+	return cookieValue;
+}
+
+var csrftoken = getCookie('csrftoken');
+console.log(csrftoken);
 
 
 		console.log("itemnameitemnameitemname", myitemname);
@@ -62,8 +82,10 @@
 		if (nofavailablereqs > 0) {
 
 			for (const x of Array(nofavailablereqs).keys()) {
-				console.log("get_public_key im here : ",x);
-				get_public_key_fromid(x);
+				var jjj = (nofavailablereqs-1) - x
+				console.log("get_public_key im here : ", jjj);
+
+				get_public_key_fromid(jjj);
 			}
 		}
 
@@ -94,17 +116,49 @@
 
 	$("body").on( "click",".button", function() {
     console.log("this is my t", this.id);
-		var alksdjaskldjas = this.id;
+		var productindex = this.id;
 
 
 
 
-			Darch.get_public_key(myitemname, alksdjaskldjas, function(error, result){
+			Darch.get_public_key(myitemname, productindex, function(error, requesterspkey){
 				 if(!error){
-					 console.log("i need get result here and", result);
-					 var mystring = "#producttext-"+alksdjaskldjas.toString();
+					 console.log("i need get result here and", requesterspkey);
+					 var mystring = "#producttext-"+productindex.toString();
+					 var encdata = $(mystring).val();
+					 console.log(encdata);
 
-					 console.log($(mystring).val());
+					 $.ajax({
+						 type:'POST',
+						 url:'/encpost/',
+						 data:{encdata: encdata, requesterspkey:requesterspkey, csrfmiddlewaretoken:csrftoken},
+						 success:function(msg){
+							 console.log(msg);
+							 if (msg["response"] == "ok") {
+								 console.log(msg["info"]);
+
+								 var myencryptedvalue = msg["info"];
+
+								 Darch.setTransmitProduct(myitemname, parseInt(productindex), myencryptedvalue,  function(error, result){
+										if(!error){
+											console.log("setTransmitProduct",result); }
+											else
+											console.error(error);
+										});
+
+
+								 //$("#resultenc").html('<textarea id="encdata" name="encdata" rows="2" cols="50">'+ msg["info"] +'</textarea>');
+
+							 }
+							 else {
+								 $("#resultenc").text(msg["info"]);
+							 }
+						 },
+					 });
+
+
+
+
 
 			} else
 			console.error(error);
@@ -130,3 +184,6 @@
 
 
  //this is my design.
+
+
+ });

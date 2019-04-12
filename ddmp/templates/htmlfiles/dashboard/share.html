@@ -83,6 +83,10 @@
      return;
    }
 
+	 //var xxttwwttrr = web4.eth.utils.toWei('1', 'ether');
+	 console.log("How toWei works", web4);
+
+
 
 	 	var pname = $("#pname").val();
  		var pexplain = $("#pexplain").val();
@@ -91,6 +95,7 @@
  		var catename = $("#catename").val();
  		var pprice = $("#pprice").val();
  		var puname = $("#puname").val();
+		pprice = web3.toWei(pprice, 'ether')
 
 		console.log("pname", pname);
 			console.log("pexplain",pexplain);
@@ -99,7 +104,7 @@
 						console.log("catename",catename);
 							console.log("puname",puname);
 
-	Darch.SharenewProduct(pname,pexplain,cplink,demourl,catename,parseInt(pprice),puname, function(error, result){
+	Darch.SharenewProduct(pname,pexplain,cplink,demourl,catename,parseFloat(pprice),puname, function(error, result){
 			 if(!error){
 	 console.log(result);
 	 } else

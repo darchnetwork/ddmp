@@ -48,7 +48,7 @@ $(document).ready(function() {
            $("#post-explain").text(result[3]);
            $(".djangoimage").attr("data-mfp-src", result[4]);
            $("#imagedjang").css('background-image', 'url(' + result[4] + ')');
-           $("#pricearea").html(result[1] + '<span style="font-size:10px;color:white;">DARCH</span>');
+           $("#pricearea").html(web4.fromWei(result[1],'ether') + '<span style="font-size:10px;color:white;">DARCH&nbsp;&nbsp;</span>');
            $("#live-preview").attr("href", result[5])
 
 
