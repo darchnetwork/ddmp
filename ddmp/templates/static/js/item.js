@@ -49,7 +49,9 @@ $(document).ready(function() {
            $(".djangoimage").attr("data-mfp-src", result[4]);
            $("#imagedjang").css('background-image', 'url(' + result[4] + ')');
            $("#pricearea").html(web4.fromWei(result[1],'ether') + '<span style="font-size:10px;color:white;">DARCH&nbsp;&nbsp;</span>');
-           $("#live-preview").attr("href", result[5])
+           $("#live-preview").attr("href", result[5]);
+           $("#itemcategg").text(result[6]);
+           $("#udatee").text(result[0]);
 
 
 
