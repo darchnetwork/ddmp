@@ -34,7 +34,7 @@ pyotp==2.2.7
 pysha3==1.0.2
 python-dateutil==2.8.0
 pytz==2018.9
-PyYAML==5.1
+PyYAML==5.4
 repoze.lru==0.7
 requests==2.21.0
 rlp==1.1.0
